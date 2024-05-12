@@ -1,0 +1,20 @@
+services:
+  plantwp:
+    image: wordpress
+    ports:
+      - 8080:80
+    depends_on:
+      - plantdb
+  plantdb:
+    image: mysql
+    ports:
+      - 31232:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_USER: somebody
+      MYSQL_PASSWORD: pass
+      MYSQL_DATABASE: plantdatas
+    volumes:
+      - plantdata:/var/lib/mysql
+volumes:
+  plantdata: {}
